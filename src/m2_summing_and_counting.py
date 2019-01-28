@@ -8,10 +8,10 @@ in another classic form:
    IN GRAPHICS:   x = x + pixels
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Aaron Wilkin, their colleagues, and Carla Archuleta.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
-
+import math
 # -----------------------------------------------------------------------------
 # Students: As you work each of these problems, ask yourself:
 #   1. Do I need a loop?
@@ -66,6 +66,24 @@ def run_test_sum_more_cosines():
     else:
         print('       actual:  ', answer)
 
+    # Test 1:
+    expected = -1.51948  # This is APPROXIMATELY the correct answer.
+    answer = sum_more_cosines(1, 4)
+    print('Test 1 expected:', expected, '(approximately)')
+    if answer is not None:
+        print('       actual:  ', round(answer, 5))
+    else:
+        print('       actual:  ', answer)
+
+    # Test 1:
+    expected = -1.40614  # This is APPROXIMATELY the correct answer.
+    answer = sum_more_cosines(2, 3)
+    print('Test 1 expected:', expected, '(approximately)')
+    if answer is not None:
+        print('       actual:  ', round(answer, 5))
+    else:
+        print('       actual:  ', answer)
+
     # -------------------------------------------------------------------------
     # TODO: 2 (continued).
     # Below this comment, add 2 more test cases of your own choosing.
@@ -73,6 +91,9 @@ def run_test_sum_more_cosines():
 
 
 def sum_more_cosines(m, n):
+    total = 0
+    for k in range(m,n):
+        total = total + math.cos(k)
     """
     What comes in:  Integers m and n, with m <= n.
     What goes out:  Returns the sum
