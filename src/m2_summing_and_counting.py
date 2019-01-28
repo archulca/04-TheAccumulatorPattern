@@ -32,7 +32,7 @@ def main():
 def run_test_sum_more_cosines():
     """ Tests the   sum_more_cosines   function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  sum_more_cosines  function defined below.
     #   Include at least **   3   ** tests (we wrote one for you).
     #
@@ -85,15 +85,16 @@ def run_test_sum_more_cosines():
         print('       actual:  ', answer)
 
     # -------------------------------------------------------------------------
-    # TODO: 2 (continued).
+    # DONE: 2 (continued).
     # Below this comment, add 2 more test cases of your own choosing.
     # -------------------------------------------------------------------------
 
 
-def sum_more_cosines(m, n):
+def sum_more_cosines(m,n):
     total = 0
-    for k in range(m,n):
+    for k in range(m,n+1):
         total = total + math.cos(k)
+    return total
     """
     What comes in:  Integers m and n, with m <= n.
     What goes out:  Returns the sum
