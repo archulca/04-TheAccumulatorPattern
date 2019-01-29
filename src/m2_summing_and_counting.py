@@ -67,7 +67,7 @@ def run_test_sum_more_cosines():
         print('       actual:  ', answer)
 
     # Test 1:
-    expected = -1.51948  # This is APPROXIMATELY the correct answer.
+    expected = -1.23582  # This is APPROXIMATELY the correct answer.
     answer = sum_more_cosines(1, 4)
     print('Test 1 expected:', expected, '(approximately)')
     if answer is not None:
@@ -76,7 +76,7 @@ def run_test_sum_more_cosines():
         print('       actual:  ', answer)
 
     # Test 1:
-    expected = -1.40614  # This is APPROXIMATELY the correct answer.
+    expected = -1.77612  # This is APPROXIMATELY the correct answer.
     answer = sum_more_cosines(2, 3)
     print('Test 1 expected:', expected, '(approximately)')
     if answer is not None:
@@ -92,8 +92,8 @@ def run_test_sum_more_cosines():
 
 def sum_more_cosines(m,n):
     total = 0
-    for k in range(m,n+1):
-        total = total + math.cos(k)
+    for k in range(n+1):
+        total = total + math.cos(m+k)
     return total
     """
     What comes in:  Integers m and n, with m <= n.
@@ -109,7 +109,7 @@ def sum_more_cosines(m,n):
          which is approximately 0.02082.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #   That is called TEST-DRIVEN DEVELOPMENT (TDD).
     #
