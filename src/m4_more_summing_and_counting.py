@@ -316,7 +316,7 @@ def count_cosines_from(m, n, x):
 def run_test_sum_unit_fractions_from():
     """ Tests the   sum_unit_fractions_from   function. """
     # -------------------------------------------------------------------------
-    # TODO: 8. Implement this TEST function.
+    # DONE: 8. Implement this TEST function.
     #   It TESTS the  sum_unit_fractions_from  function defined below.
     #   Include at least **   3   ** tests (we wrote one for you).
     # Use the same 4-step process as for previous TEST functions.
@@ -331,6 +331,20 @@ def run_test_sum_unit_fractions_from():
     answer = sum_unit_fractions_from(6, 9)
     print('Test 1 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
+
+    # Test 2:
+    expected = 6.853282  # This is APPROXIMATELY the correct answer.
+    answer = sum_unit_fractions_from(10, 9000)
+    print('Test 2 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 0.545635  # This is APPROXIMATELY the correct answer.
+    answer = sum_unit_fractions_from(6, 9)
+    print('Test 3 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
+
 
     # -------------------------------------------------------------------------
     # TO DO: 8 (continued).
@@ -351,14 +365,18 @@ def sum_unit_fractions_from(m, n):
       -- sum_unit_fractions_from(10, 9000)  returns about  6.853
     """
     # -------------------------------------------------------------------------
-    # TODO: 9. Implement and test this function.
+    # DONE: 9. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # -------------------------------------------------------------------------
+    total = 0
+    for k in range (m-1, n):
+        total = total + 1/(k+1)
 
+    return total
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
