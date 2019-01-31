@@ -29,7 +29,7 @@ def main():
     """ Calls the   TEST   functions in this module. """
     run_test_draw_parallel_lines()
     run_test_draw_lines()
-
+    return()
 
 def run_test_draw_parallel_lines():
     """ Tests the   draw_parallel_lines  function. """
@@ -65,7 +65,8 @@ def run_test_draw_parallel_lines():
     left_most_point = rg.Point(20, 20)
     draw_parallel_lines(12, left_most_point, 470, window2)
 
-    window2.close_on_mouse_click()
+    window2.continue_on_mouse_click()
+    return()
 
 
 def draw_parallel_lines(n, point, length, window):
@@ -96,7 +97,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -109,13 +110,16 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
-
-    point = rg.Point(200,200)
-    for _ in range (n):
-        line = rg.Line(point,length)
-        line.attach_to(window)
+    startx = point.x
+    starty = point.y
+    line = rg.Line(point, rg.Point(startx + length, starty))
+    for k in range (n):
+        newline = rg.Line(point, rg.Point(startx + length, starty))
+        newline.move_by(0,30*k)
+        newline.attach_to(window)
         window.render()
-    window.close_on_mouse_click()
+    window.continue_on_mouse_click()
+    return()
 
 
 
@@ -139,7 +143,7 @@ def run_test_draw_lines():
     window2 = rg.RoseWindow(350, 300, 'Test 3 of DRAW_LINES:  7 lines!')
     draw_lines(7, rg.Point(50, 120), window2)
     window2.close_on_mouse_click()
-
+    return()
 
 def draw_lines(n, point, window):
     """
@@ -182,7 +186,9 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
-
+    for _ in range(n):
+        #line = rg.Line(point,
+    return()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
