@@ -147,9 +147,32 @@ def run_test_draw_circles_from_rectangle():
     #   Follow the same form as the example in a previous problem.
     ###########################################################################
     # -------------------------------------------------------------------------
+    title = 'Tests 1 and 2 of DRAW_CIRCLES_FROM_SQUARES:'
+    window1 = rg.RoseWindow(720, 500, title)
+
+    # Test 1:
+    rectangle = rg.Rectangle(rg.Point(400,250),rg.Point(440,325))
+    rectangle.fill_color = 'green'
+    rectangle.attach_to(window1)
+    draw_circles_from_rectangle(4,5,rectangle,window1,'green')
+
+    # Test 2:
+    rectangle = rg.Rectangle(rg.Point(600, 400), rg.Point(500, 450))
+    rectangle.fill_color = 'blue'
+    rectangle.attach_to(window1)
+    draw_circles_from_rectangle(8,3, rectangle, window1,'blue')
+
+    title = 'Test 3 of DRAW_CIRCLES_FROM_SQUARES:'
+    window1 = rg.RoseWindow(620, 380, title)
+
+    # Test 3:
+    rectangle = rg.Rectangle(rg.Point(375, 330), rg.Point(350, 280))
+    rectangle.fill_color = 'yellow'
+    rectangle.attach_to(window1)
+    draw_circles_from_rectangle(6,10, rectangle, window1,'yellow')
 
 
-def draw_circles_from_rectangle(m, n, rectangle, window):
+def draw_circles_from_rectangle(m, n, rectangle, window,color):
     """
     What comes in:  Four arguments:
       -- Positive integers m and n.
@@ -189,7 +212,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -202,7 +225,25 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    height = rectangle.get_height()
+    width = rectangle.get_width()
+    centerx = rectangle.get_center().x
+    centery = rectangle.get_center().y
 
+    for k in range (m):
+        circle1 = rg.Circle(rg.Point(centerx-(width/2)-(height/2),centery),height/2)
+        circle1.attach_to(window)
+        newcircle = rg.Circle(rg.Point(centerx - (width/2) - (2*k+1)*(height/2),centery),height/2)
+        newcircle.attach_to(window)
+        circle1.fill_color = color
+        newcircle.fill_color = color
+    for k in range (n):
+        circle2 = rg.Circle(rg.Point(centerx,centery-(width/2)-(height/2)),width/2)
+        circle2.attach_to(window)
+        newcircle = rg.Circle(rg.Point(centerx,centery - (height/2)-(2*k+1)*(width/2)),width/2)
+        newcircle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
 
 def run_test_draw_lines_from_rectangles():
     """ Tests the   draw_lines_from_rectangles  function. """
@@ -221,11 +262,15 @@ def run_test_draw_lines_from_rectangles():
     rectangle2 = rg.Rectangle(rg.Point(300, 150), rg.Point(400, 175))
     rectangle1.outline_color = 'red'
     rectangle2.outline_color = 'blue'
+    rectangle1.attach_to(window1)
+    rectangle2.attach_to(window1)
     draw_lines_from_rectangles(rectangle1, rectangle2, 5, window1)
 
     rectangle1 = rg.Rectangle(rg.Point(870, 30), rg.Point(750, 100))
     rectangle2 = rg.Rectangle(rg.Point(700, 90), rg.Point(650, 60))
     rectangle2.outline_color = 'green'
+    rectangle1.attach_to(window1)
+    rectangle2.attach_to(window1)
     draw_lines_from_rectangles(rectangle1, rectangle2, 8, window1)
 
     window1.close_on_mouse_click()
@@ -239,6 +284,8 @@ def run_test_draw_lines_from_rectangles():
     rectangle1.outline_color = 'brown'
     rectangle2.outline_color = 'cyan'
     rectangle2.outline_thickness = 10
+    rectangle1.attach_to(window2)
+    rectangle2.attach_to(window2)
     draw_lines_from_rectangles(rectangle1, rectangle2, 11, window2)
 
     window2.close_on_mouse_click()
@@ -281,7 +328,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type window: rg.RoseWindow
       """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -294,7 +341,17 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    center1x = rectangle1.get_center().x
+    center1y = rectangle1.get_center().y
+    center2x = rectangle2.get_center().x
+    center2y = rectangle2.get_center().y
+    dx1 = (rectangle1.get_width())/2
+    dy1 = (rectangle1.get_height())/2
 
+    for k in range(n):
+        line = rg.Line(rg.Point(center1x-k*dx1,center1y+k*dy1),rg.Point(center2x-k*dx1,center2y+k*dy1))
+        line.attach_to(window)
+        window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
